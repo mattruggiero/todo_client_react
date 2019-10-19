@@ -2,20 +2,26 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+import { login } from '../../actions/authActions';
 
-
+//need to fix up error handeling server side but this component
+//is working 
 class UserLogin extends Component {
-    //Uncomment when home page is figured out
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.auth.isAuthenticated){
-    //         setCart();
-    //         this.props.history.push('/');
+    // constructor(props){
+    //     super(props);
+    //     this.state = {};
+    // }
+
+    // static getDerivedStateFromProps(props,state){
+    //     if(props.auth.isAuthenticated){
+    //         this.props.history.push('/taskList');
     //     }
-    //     if(nextProps.errors){
-    //         console.log(nextProps.errors);
+    //     if(props.errors){
+    //         console.log(props.errors);
     //     }
+    //     this.setState(...state);
     // }
 
     handleSubmit = (event) => {
@@ -24,7 +30,7 @@ class UserLogin extends Component {
             email: event.target.email.value,
             password: event.target.password.value
         }
-        //log in function here
+        login(loginJSON);
     }
     render(){
         return(
@@ -48,4 +54,9 @@ class UserLogin extends Component {
     }
 }
 
-export default UserLogin;
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps)(UserLogin);

@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
-
-
-
 
 import { Provider } from 'react-redux';
 import UserLogin from './components/user/UserLogin';
 import UserRegister from './components/user/UserRegister';
+import Header from './components/display/Header';
 import { setAuthToken } from './helperFunctions';
 import store from './store';
 import { SET_CURRENT_USER } from './actions/types';
 import { logoutUser } from './actions/authActions';
 
-require('dotenv').config();
+//require('dotenv').config();
 //check for token
 
 if(localStorage.jwtToken){
@@ -36,10 +33,10 @@ class App extends Component{
   render(){
     return(
       <Provider store = {store}>
+        <Header/>
         <UserRegister/>
         <Router>
           <div>
-            <hr/>
             <Route exact path = "/login" component = { UserLogin }/>
             <Route exact path = "/register" component = { UserRegister }/>
           </div>

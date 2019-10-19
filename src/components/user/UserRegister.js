@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-
+import { connect } from 'react-redux';
 
 class UserRegister extends Component {
     constructor(props){
@@ -29,17 +26,23 @@ class UserRegister extends Component {
         return(
             <Container>
                 <Form onSubmit = {this.handleSubmit}>
-                    <Form.Control id = 'email' placeholder = 'email'/>
-                    <Form.Control id = 'userName' placeholder = "user name"/>
-                    <Form.control id = 'password' placeholder = 'password'/>
-                    <Form.control id = 'confirmPassword' placeholder = 'confirm passowrd'/>
-                    <Button variant = 'primary' type = 'submit'>
+                    <hr/>
+                    <Form.Control id = "email" placeholder = "email"/>
+                    <hr/>
+                    <Form.Control id = "userName" placeholder = "user name"/>
+                    <hr/>
+                    <Form.Control id = "password" placeholder = "password"/>
+                    <hr/>
+                    <Form.Control id = "confirmPassword" placeholder = "confirm passowrd"/>
+                    <hr/>
+                    <Button variant = "primary" type = "submit">
                         Register
                     </Button>
                 </Form>
             </Container>
-        );
+        )
     }
+
 }
 
 const mapStateToProps = state => ({
